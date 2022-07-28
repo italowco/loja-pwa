@@ -1,0 +1,35 @@
+<div class="products-list-container v-h-center-block-parent">
+  <div class="buttons">
+    <!-- <button
+      class="button button-primary"
+      (click)="subscribeToNotifications()"
+      [disabled]="sub"
+    >
+      Subscribe
+    </button>
+
+    <button class="button button-danger" (click)="sendNewsletter()">
+      Send
+    </button> -->
+
+    <button (click)="loadLessons()">
+      Reload Lessons
+    </button>
+  </div>
+
+  <h2>All products - V2</h2>
+
+  <table class="table products-list card card-strong">
+    <tbody>
+      <tr
+        *ngFor="let product of products$ | async"
+      >
+        <td class="lesson-title">{{ product.description }}</td>
+        <td class="duration">
+          <i class="md-icon duration-icon">access_time</i>
+          <span>{{ product.duration }}</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
