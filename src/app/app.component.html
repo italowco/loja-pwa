@@ -1,11 +1,8 @@
-<mat-drawer-container  color="primary" class="example-container">
+<mat-drawer-container color="primary" class="example-container">
   <mat-drawer color="secondary" #sidenav mode="side" closed>
     <mat-list color="primary">
-      <mat-list-item routerLink="/products">Products
-    </mat-list-item>
-      <mat-list-item> Salt </mat-list-item>
-      <mat-list-item> Paprika </mat-list-item>
-     </mat-list>
+      <mat-list-item routerLink="/products">Products </mat-list-item>
+    </mat-list>
   </mat-drawer>
   <mat-drawer-content color="primary">
     <mat-toolbar color="primary">
@@ -29,11 +26,7 @@
         <mat-icon>share</mat-icon>
       </button>
     </mat-toolbar>
-    <div class="courses">
 
-
-
-    </div>
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>
