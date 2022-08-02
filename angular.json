@@ -77,6 +77,13 @@
             },
             "development": {
               "browserTarget": "loja-pwa:build:development"
+            },
+            "options": {
+              "proxyConfig": "proxy.config.js"
+            },
+            "hmr": {
+              "hmr": true,
+              "browserTarget": "loja-pwa:build:hmr"
             }
           },
           "defaultConfiguration": "development"

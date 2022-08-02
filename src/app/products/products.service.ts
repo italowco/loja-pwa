@@ -4,21 +4,26 @@ import {HttpClient} from "@angular/common/http";
 import {Product} from "../model/product";
 import {Observable} from "rxjs";
 import {map} from 'rxjs/operators';
+import { environment } from "src/environments/environment";
 
 
 @Injectable()
 export class ProductsService {
 
-    constructor(private http: HttpClient) {
+    url = '';
 
+    constructor(private http: HttpClient) {
+      this.url = environment.apiUrl;
     }
 
     loadAll() : Observable<Product[]> {
-        return this.http.get<any>('http://localhost:8005/api/products').pipe(map(res => res.payload));
+        return this.http.get<any>(`${this.url}/api/products`).pipe(map(res => {
+          return res.products;
+        } ));
     }
 
     findById(id:number) {
-        return this.http.get<Product>('/api/products/' + id);
+        return this.http.get<Product>(`${this.url}/api/products/` + id);
     }
 
 }

@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
   })
 export class ProductsComponent implements OnInit {
 
-    products$!: Observable<Product[]>;
+    products: Observable<Product[]> = new Observable<Product[]>();
 
 
 
@@ -28,7 +28,7 @@ export class ProductsComponent implements OnInit {
 
 
     loadLessons() {
-        this.products$ = this.productsService.loadAll();
+        this.products = this.productsService.loadAll();
     }
 
 

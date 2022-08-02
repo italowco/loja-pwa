@@ -12,24 +12,17 @@
       Send
     </button> -->
 
-    <button (click)="loadLessons()">
+    <button  mat-raised-button color="primary" (click)="loadLessons()">
       Reload Lessons
     </button>
   </div>
 
   <h2>All products - V2</h2>
 
-  <table class="table products-list card card-strong">
-    <tbody>
-      <tr
-        *ngFor="let product of products$ | async"
-      >
-        <td class="lesson-title">{{ product.description }}</td>
-        <td class="duration">
-          <i class="md-icon duration-icon">access_time</i>
-          <span>{{ product.duration }}</span>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <mat-selection-list #product>
+    <mat-list-option  *ngFor="let product of products | async" role="listitem">
+      {{ product.description }}
+    </mat-list-option>
+
+  </mat-selection-list>
 </div>
