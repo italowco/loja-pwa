@@ -9,7 +9,7 @@
       <button mat-icon-button mat-button (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <span>PWA SHOP</span>
+      <span>PWA SHOP - V4</span>
       <span class="example-spacer"></span>
       <button
         mat-icon-button
@@ -27,6 +27,14 @@
       </button>
     </mat-toolbar>
 
+    <div class="buttons">
+
+      <button mat-raised-button color="primary"  (click)="subscribeToNotifications()"
+              [disabled]="sub">Subscribe</button>
+
+      <button mat-raised-button color="secondary"  (click)="sendNewsletter()">Send</button>
+
+    </div>
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>

@@ -1,23 +1,13 @@
 <div class="products-list-container v-h-center-block-parent">
   <div class="buttons">
-    <!-- <button
-      class="button button-primary"
-      (click)="subscribeToNotifications()"
-      [disabled]="sub"
-    >
-      Subscribe
-    </button>
 
-    <button class="button button-danger" (click)="sendNewsletter()">
-      Send
-    </button> -->
 
     <button  mat-raised-button color="primary" (click)="loadLessons()">
       Reload Lessons
     </button>
   </div>
 
-  <h2>All products - V2</h2>
+  <h2>All products</h2>
 
   <mat-selection-list #product>
     <mat-list-option  *ngFor="let product of products | async" role="listitem">

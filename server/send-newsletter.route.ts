@@ -10,9 +10,9 @@ export function sendNewsletter(req, res) {
     // sample notification payload
     const notificationPayload = {
         "notification": {
-            "title": "Angular News",
-            "body": "Newsletter Available!",
-            "icon": "assets/main-page-logo-small-hat.png",
+            "title": "Notifição de Teste",
+            "body": "Newsletter disponínvel!",
+            "icon": "/assets/notificacao.png",
             "vibrate": [100, 50, 100],
             "data": {
                 "dateOfArrival": Date.now(),
