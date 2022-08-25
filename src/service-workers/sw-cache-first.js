@@ -6,7 +6,7 @@ function log(message) {
 
 
 const precachedAssets = [
-  '',
+  '/',
   '/offline.html',
   '/index.html',
   '/main.js',
@@ -15,41 +15,50 @@ const precachedAssets = [
   '/polyfills.js',
   '/runtime.js',
   '/vendor.js',
-  '/src_app_products_products_module_ts.js'
+  '/src_app_products_products_module_ts.js',
 ];
 
 
 self.addEventListener('install', (event) => {
   log('Service Worker Instalado');
 
-  event.waitUntil(installServiceWorker());
-
+  //event.waitUntil(installServiceWorker());
 });
 
 async function installServiceWorker() {
 
-  self.skipWaiting();
-
   log('Instalando o service workers');
   const cache = await caches.open(getCacheVersion());
-  return cache.addAll(precachedAssets);
+
+  cache.addAll(precachedAssets);
 }
 
 self.addEventListener('fetch', (event) => {
-  log('Fetch interceptad: ' + event.request.url);
+  log('Fetch interceptado para: ', event.request.url);
+
+
+  event.respondWith(cacheThenNetwork(event));
+
 });
 
-self.addEventListener('activate', (event) => activateSW());
+self.addEventListener('activate', (event) => {
+  log('Service Worker esta ativado.');
+});
 
-async function activateSW() {
-  const cacheKeys = await caches.keys();
-  cacheKeys.forEach(cacheKey => {
-    if (cacheKey !== getCacheVersion()) {
-      caches.delete(cacheKey);
-    }
-  });
+async function cacheThenNetwork(event) {
 
-  return clients.claim();
+  const cache = await caches.open(getCacheVersion());
+
+  const cachedResponse = await cache.match(event.request);
+
+  if (cachedResponse) {
+    log('From cache: ', event.request.url);
+    return cachedResponse;
+  }
+
+  log('From network: ', event);
+  const networkResponse = await fetch(event.request);
+  return fetch(networkResponse);
 }
 
 
